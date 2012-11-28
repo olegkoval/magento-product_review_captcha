@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+/**
+ * Product Review Captcha
+ *
+ * @category    OlegKoval
+ * @package     OlegKoval_ProductReviewCaptcha
+ * @copyright   Copyright (c) 2012 Oleg Koval
+ * @author      Oleg Koval <oleh.koval@gmail.com>
+ */
+-->
+<config>
+	<modules>
+		<OlegKoval_ProductReviewCaptcha>
+			<active>true</active>
+			<codePool>community</codePool>
+		</OlegKoval_ProductReviewCaptcha>
+	</modules>
+</config>

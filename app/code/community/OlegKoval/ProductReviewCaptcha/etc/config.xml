@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+/**
+ * Product Review Captcha
+ *
+ * @category    OlegKoval
+ * @package     OlegKoval_ProductReviewCaptcha
+ * @copyright   Copyright (c) 2012 Oleg Koval
+ * @author      Oleg Koval <oleh.koval@gmail.com>
+ */
+-->
+<config>
+	<modules>
+		<OlegKoval_ProductReviewCaptcha>
+			<version>1.0.0</version>
+			<depends>
+				<Mage_Contacts/>
+			</depends>
+		</OlegKoval_ProductReviewCaptcha>
+	</modules>
+
+    <global>
+        <blocks>
+            <review>
+                <rewrite>
+                    <form>OlegKoval_ProductReviewCaptcha_Block_Form</form>
+                </rewrite>
+            </review>
+        </blocks>
+
+        <models>
+            <productreviewcaptcha>
+                <class>OlegKoval_ProductReviewCaptcha_Model</class>
+            </productreviewcaptcha>
+        </models>
+    </global>
+
+	<frontend>
+		<routers>
+            <review>
+                <args>
+                    <modules>
+                        <productreviewcaptcha before="Mage_Review">OlegKoval_ProductReviewCaptcha</productreviewcaptcha>
+                    </modules>
+                </args>
+            </review>
+        </routers>
+	</frontend>
+</config>
