@@ -34,7 +34,7 @@ class OlegKoval_ProductReviewCaptcha_ProductController extends Mage_Review_Produ
                 $post = $this->getRequest()->getPost();
                 if ($post) {
                     //include reCaptcha library
-                    require_once(Mage::getBaseDir('lib') . DS .'reCaptcha'. DS .'recaptchalib.php');
+                    require_once(Mage::getModuleDir('', 'OlegKoval_ProductReviewCaptcha') . DS .'Helper'. DS .'recaptchalib.php');
                     
                     //validate captcha
                     $privatekey = Mage::getStoreConfig(self::XML_PATH_PRC_PRIVATE_KEY);

@@ -56,7 +56,7 @@ class OlegKoval_ProductReviewCaptcha_Block_Form extends Mage_Review_Block_Form {
         //if "Product Review Captcha" module is enabled - then we display template with reCAPTCHA
         if (Mage::getStoreConfigFlag(self::XML_PATH_PRC_ENABLED)) {
             //include reCaptcha library
-            require_once(Mage::getBaseDir('lib') . DS .'reCaptcha'. DS .'recaptchalib.php');
+            require_once(Mage::getModuleDir('', 'OlegKoval_ProductReviewCaptcha') . DS .'Helper'. DS .'recaptchalib.php');
             
             //create captcha html-code
             $publickey = Mage::getStoreConfig(self::XML_PATH_PRC_PUBLIC_KEY);

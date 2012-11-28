@@ -28,6 +28,12 @@
             </review>
         </blocks>
 
+        <helpers>
+            <productreviewcaptcha>
+                <class>OlegKoval_ProductReviewCaptcha_Helper</class>
+            </productreviewcaptcha>
+        </helpers>
+
         <models>
             <productreviewcaptcha>
                 <class>OlegKoval_ProductReviewCaptcha_Model</class>
