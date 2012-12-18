@@ -8,7 +8,7 @@
  * @author      Oleg Koval <oleh.koval@gmail.com>
  */
 //include controller to override it
-require_once(Mage::getBaseDir('app') . DS .'code'. DS .'core'. DS .'Mage'. DS .'Review'. DS .'controllers'. DS .'ProductController.php');
+require_once 'Mage/Review/controllers/ProductController.php';
 
 class OlegKoval_ProductReviewCaptcha_ProductController extends Mage_Review_ProductController {
     const XML_PATH_PRC_ENABLED     = 'catalog/review/prc_enabled';
