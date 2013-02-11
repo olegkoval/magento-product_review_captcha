@@ -43,7 +43,7 @@ class OlegKoval_ProductReviewCaptcha_ProductController extends Mage_Review_Produ
 
 
                     if (!$captcha->is_valid) {
-                        throw new Exception("The reCAPTCHA wasn't entered correctly.", 1);
+                        throw new Exception($this->__("The reCAPTCHA wasn't entered correctly."), 1);
                     }
                 }
                 else {

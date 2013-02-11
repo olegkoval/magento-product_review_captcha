@@ -12,7 +12,7 @@
 <config>
 	<modules>
 		<OlegKoval_ProductReviewCaptcha>
-			<version>1.1.0</version>
+			<version>1.2.0</version>
 			<depends>
 				<Mage_Contacts/>
 			</depends>
@@ -51,5 +51,14 @@
                 </args>
             </review>
         </routers>
+        <translate>                                                                                                                                   
+            <modules>                                                                                                                                 
+                <OlegKoval_ProductReviewCaptcha>                                                                                                                 
+                    <files>                                                                                                                           
+                        <default>OlegKoval_ProductReviewCaptcha.csv</default>                                                                                    
+                    </files>                                                                                                                          
+                </OlegKoval_ProductReviewCaptcha>                                                                                                                
+            </modules>                                                                                                                                
+        </translate>
 	</frontend>
 </config>
