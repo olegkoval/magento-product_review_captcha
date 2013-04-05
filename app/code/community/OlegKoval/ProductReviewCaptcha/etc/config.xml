@@ -60,5 +60,17 @@
                 </OlegKoval_ProductReviewCaptcha>                                                                                                                
             </modules>                                                                                                                                
         </translate>
-	</frontend>
+    </frontend>
+    
+    <adminhtml>
+        <translate>                                                                                                                                   
+            <modules>                                                                                                                                 
+                <OlegKoval_ProductReviewCaptcha>                                                                                                                 
+                    <files>                                                                                                                           
+                        <default>OlegKoval_ProductReviewCaptcha.csv</default>                                                                                    
+                    </files>                                                                                                                          
+                </OlegKoval_ProductReviewCaptcha>                                                                                                                
+            </modules>                                                                                                                                
+        </translate>
+	</adminhtml>
 </config>
