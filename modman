@@ -1,0 +1,6 @@
+# Product Review Captcha (https://github.com/olegkoval/magento-product_review_captcha)
+
+app/code/community/OlegKoval/ProductReviewCaptcha	app/code/community/OlegKoval/ProductReviewCaptcha
+app/design/frontend/base/default/template/productreviewcaptcha	app/design/frontend/base/default/template/productreviewcaptcha
+app/etc/modules/OlegKoval_ProductReviewCaptcha.xml	app/etc/modules/OlegKoval_ProductReviewCaptcha.xml
+app/locale/en_US/OlegKoval_ProductReviewCaptcha.csv	app/locale/en_US/OlegKoval_ProductReviewCaptcha.csv
