@@ -37,6 +37,7 @@
     </script>
     <form action="<?php echo $this->getAction() ?>" method="post" id="review-form">
         <fieldset>
+            <?php echo $this->getBlockHtml('formkey'); ?>
             <?php echo $this->getChildHtml('form_fields_before')?>
             <h3><?php echo $this->__("You're reviewing:"); ?> <span><?php echo $this->htmlEscape($this->getProductInfo()->getName()) ?></span></h3>
             <?php if( $this->getRatings() && $this->getRatings()->getSize()): ?>
