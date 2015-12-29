@@ -62,12 +62,14 @@ class OlegKoval_ProductReviewCaptcha_Block_Form extends Mage_Review_Block_Form {
             //create captcha html-code
             $publickey = Mage::getStoreConfig(self::XML_PATH_PRC_PUBLIC_KEY);
             $ssl_option = Mage::getStoreConfig(self::XML_PATH_PRC_SSL);
+            $ssl_option = Mage::app()->getStore()->isCurrentlySecure();
+			
             $captcha_code = '';
             if ($ssl_option == 1) {
-            	$captcha_code = recaptcha_get_html($publickey, true);
+            	$captcha_code = recaptcha_get_html($publickey, null, true);
             }
             else {
-            	$captcha_code = recaptcha_get_html($publickey, false);
+            	$captcha_code = recaptcha_get_html($publickey, null, false);
             }
 
             //get reCaptcha theme name
