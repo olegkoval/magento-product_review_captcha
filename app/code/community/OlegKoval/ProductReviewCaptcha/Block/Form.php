@@ -64,10 +64,10 @@ class OlegKoval_ProductReviewCaptcha_Block_Form extends Mage_Review_Block_Form {
             $ssl_option = Mage::getStoreConfig(self::XML_PATH_PRC_SSL);
             $captcha_code = '';
             if ($ssl_option == 1) {
-            	$captcha_code = recaptcha_get_html($publickey, true);
+            	$captcha_code = recaptcha_get_html($publickey, null, true);
             }
             else {
-            	$captcha_code = recaptcha_get_html($publickey, false);
+            	$captcha_code = recaptcha_get_html($publickey, null, false);
             }
 
             //get reCaptcha theme name
