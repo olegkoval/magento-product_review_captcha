@@ -29,7 +29,7 @@
                             <show_in_store>1</show_in_store>
                         </prc_enabled>
                         <prc_public_key translate="label">
-                            <label>Public Key</label>
+                            <label>Site Key</label>
                             <comment>You got this from the signup page: https://www.google.com/recaptcha/admin/create</comment>
                             <frontend_type>text</frontend_type>
                             <sort_order>120</sort_order>
@@ -38,7 +38,7 @@
                             <show_in_store>1</show_in_store>
                         </prc_public_key>
                         <prc_private_key translate="label">
-                            <label>Private Key</label>
+                            <label>Secret Key</label>
                             <comment>You got this from the signup page: https://www.google.com/recaptcha/admin/create</comment>
                             <frontend_type>text</frontend_type>
                             <sort_order>130</sort_order>
