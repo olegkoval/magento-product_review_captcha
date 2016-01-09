@@ -15,7 +15,6 @@ class OlegKoval_ProductReviewCaptcha_Block_Form extends Mage_Review_Block_Form {
     const XML_PATH_PRC_PRIVATE_KEY = 'catalog/review/prc_private_key';
     const XML_PATH_PRC_THEME       = 'catalog/review/prc_theme';
     const XML_PATH_PRC_LANG        = 'catalog/review/prc_lang';
-    const XML_PATH_PRC_SSL         = 'catalog/review/prc_ssl';
 
     /**
      * Constructor of this class which set template of review form
@@ -61,14 +60,7 @@ class OlegKoval_ProductReviewCaptcha_Block_Form extends Mage_Review_Block_Form {
             
             //create captcha html-code
             $publickey = Mage::getStoreConfig(self::XML_PATH_PRC_PUBLIC_KEY);
-            $ssl_option = Mage::getStoreConfig(self::XML_PATH_PRC_SSL);
-            $captcha_code = '';
-            if ($ssl_option == 1) {
-            	$captcha_code = recaptcha_get_html($publickey, null, true);
-            }
-            else {
-            	$captcha_code = recaptcha_get_html($publickey, null, false);
-            }
+            $captcha_code = recaptcha_get_html($publickey, null, Mage::app()->getStore()->isCurrentlySecure());
 
             //get reCaptcha theme name
             $theme = Mage::getStoreConfig(self::XML_PATH_PRC_THEME);

@@ -12,7 +12,7 @@
 <config>
 	<modules>
 		<OlegKoval_ProductReviewCaptcha>
-			<version>1.2.0</version>
+			<version>1.2.1</version>
 			<depends>
 				<Mage_Contacts/>
 			</depends>
