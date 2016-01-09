@@ -5,6 +5,9 @@ Product Review Captcha
 
 This extension uses reCaptcha library (http://www.google.com/recaptcha).
 
+## EXTENSION on MagentoConnect
+https://www.magentocommerce.com/magento-connect/product-review-captcha-1.html
+
 ## INSTRUCTION
 * Sign up for a reCAPTCHA account on http://www.google.com/recaptcha
 * Open configuration page of "Product Review Captcha": [Top menu of Magento Store Admin Panel] System -> Configuration -> [select tab] Catalog -> [expand section] Product Reviews
