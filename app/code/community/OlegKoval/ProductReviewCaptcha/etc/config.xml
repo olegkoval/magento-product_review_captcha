@@ -5,19 +5,19 @@
  *
  * @category    OlegKoval
  * @package     OlegKoval_ProductReviewCaptcha
- * @copyright   Copyright (c) 2012 Oleg Koval
+ * @copyright   Copyright (c) 2012 - 2016 Oleg Koval
  * @author      Oleg Koval <oleh.koval@gmail.com>
  */
 -->
 <config>
-	<modules>
-		<OlegKoval_ProductReviewCaptcha>
-			<version>1.2.1</version>
-			<depends>
-				<Mage_Contacts/>
-			</depends>
-		</OlegKoval_ProductReviewCaptcha>
-	</modules>
+    <modules>
+        <OlegKoval_ProductReviewCaptcha>
+            <version>1.3.0</version>
+            <depends>
+                <Mage_Contacts/>
+            </depends>
+        </OlegKoval_ProductReviewCaptcha>
+    </modules>
 
     <global>
         <blocks>
@@ -41,8 +41,8 @@
         </models>
     </global>
 
-	<frontend>
-		<routers>
+    <frontend>
+        <routers>
             <review>
                 <args>
                     <modules>
@@ -51,26 +51,26 @@
                 </args>
             </review>
         </routers>
-        <translate>                                                                                                                                   
-            <modules>                                                                                                                                 
-                <OlegKoval_ProductReviewCaptcha>                                                                                                                 
-                    <files>                                                                                                                           
-                        <default>OlegKoval_ProductReviewCaptcha.csv</default>                                                                                    
-                    </files>                                                                                                                          
-                </OlegKoval_ProductReviewCaptcha>                                                                                                                
-            </modules>                                                                                                                                
+        <translate>
+            <modules>
+                <OlegKoval_ProductReviewCaptcha>
+                    <files>
+                        <default>OlegKoval_ProductReviewCaptcha.csv</default>
+                    </files>
+                </OlegKoval_ProductReviewCaptcha>
+            </modules>
         </translate>
     </frontend>
-    
+
     <adminhtml>
-        <translate>                                                                                                                                   
-            <modules>                                                                                                                                 
-                <OlegKoval_ProductReviewCaptcha>                                                                                                                 
-                    <files>                                                                                                                           
-                        <default>OlegKoval_ProductReviewCaptcha.csv</default>                                                                                    
-                    </files>                                                                                                                          
-                </OlegKoval_ProductReviewCaptcha>                                                                                                                
-            </modules>                                                                                                                                
+        <translate>
+            <modules>
+                <OlegKoval_ProductReviewCaptcha>
+                    <files>
+                        <default>OlegKoval_ProductReviewCaptcha.csv</default>
+                    </files>
+                </OlegKoval_ProductReviewCaptcha>
+            </modules>
         </translate>
-	</adminhtml>
+    </adminhtml>
 </config>

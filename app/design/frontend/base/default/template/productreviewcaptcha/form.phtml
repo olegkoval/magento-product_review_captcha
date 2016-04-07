@@ -27,13 +27,15 @@
 <div class="form-add">
     <h2><?php echo $this->__('Write Your Own Review') ?></h2>
     <?php if ($this->getAllowWriteReviewFlag()): ?>
+    <script src="https://www.google.com/recaptcha/api.js?onload=renderReCaptcha&render=explicit" async defer></script>
     <script type="text/javascript">
-    //<![CDATA[
-        var RecaptchaOptions = {
-            theme : '<?php echo $this->getCaptchaTheme(); ?>',
-            lang : '<?php echo $this->getCaptchaLang(); ?>',
-        };
-    //]]>
+        function renderReCaptcha() {
+            grecaptcha.render('re_captcha', {
+              sitekey: '<?php echo $this->getSiteKey(); ?>',
+              theme: '<?php echo $this->getCaptchaTheme(); ?>',
+              lang: '<?php echo $this->getCaptchaLang(); ?>'
+            });
+        }
     </script>
     <form action="<?php echo $this->getAction() ?>" method="post" id="review-form">
         <fieldset>
@@ -95,7 +97,7 @@
                     </li>
                     <li class="wide">
                         <div class="input-box">
-                            <?php echo $this->getCaptchaCode(); ?>
+                            <div id="re_captcha"></div>
                         </div>
                     </li>
                 </ul>

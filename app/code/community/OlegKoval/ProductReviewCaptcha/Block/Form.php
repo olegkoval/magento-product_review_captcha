@@ -5,7 +5,7 @@
  *
  * @category    OlegKoval
  * @package     OlegKoval_ProductReviewCaptcha
- * @copyright   Copyright (c) 2012 Oleg Koval
+ * @copyright   Copyright (c) 2012 - 2016 Oleg Koval
  * @author      Oleg Koval <oleh.koval@gmail.com>
  */
 
@@ -30,7 +30,7 @@ class OlegKoval_ProductReviewCaptcha_Block_Form extends Mage_Review_Block_Form {
         if ($data == null) {
             $data = Mage::getSingleton('core/session')->getFormData(true);
         }
-        
+
         $data = new Varien_Object($data);
 
         // add logged in customer name as nickname
@@ -55,17 +55,13 @@ class OlegKoval_ProductReviewCaptcha_Block_Form extends Mage_Review_Block_Form {
 
         //if "Product Review Captcha" module is enabled - then we display template with reCAPTCHA
         if (Mage::getStoreConfigFlag(self::XML_PATH_PRC_ENABLED)) {
-            //include reCaptcha library
-            require_once(Mage::getModuleDir('', 'OlegKoval_ProductReviewCaptcha') . DS .'Helper'. DS .'recaptchalib.php');
-            
-            //create captcha html-code
-            $publickey = Mage::getStoreConfig(self::XML_PATH_PRC_PUBLIC_KEY);
-            $captcha_code = recaptcha_get_html($publickey, null, Mage::app()->getStore()->isCurrentlySecure());
+            //get site key
+            $siteKey = Mage::getStoreConfig(self::XML_PATH_PRC_PUBLIC_KEY);
 
             //get reCaptcha theme name
             $theme = Mage::getStoreConfig(self::XML_PATH_PRC_THEME);
-            if (strlen($theme) == 0 || !in_array($theme, array('red', 'white', 'blackglass', 'clean'))) {
-                $theme = 'red';
+            if (strlen($theme) == 0 || !in_array($theme, array('dark', 'light'))) {
+                $theme = 'light';
             }
 
             //get reCaptcha lang name
@@ -74,13 +70,10 @@ class OlegKoval_ProductReviewCaptcha_Block_Form extends Mage_Review_Block_Form {
                 $lang = 'en';
             }
 
-            //small hack for language feature - because it's not working as described in documentation
-            $captcha_code = str_replace('?k=', '?hl='. $lang .'&amp;k=', $captcha_code);
-
             $this->setTemplate('productreviewcaptcha/form.phtml')
                 ->assign('data', $data)
                 ->assign('messages', Mage::getSingleton('review/session')->getMessages(true))
-                ->setCaptchaCode($captcha_code)
+                ->setSiteKey($siteKey)
                 ->setCaptchaTheme($theme)
                 ->setCaptchaLang($lang);
         }

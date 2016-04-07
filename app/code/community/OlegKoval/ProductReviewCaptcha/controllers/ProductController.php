@@ -4,7 +4,7 @@
  *
  * @category    OlegKoval
  * @package     OlegKoval_ProductReviewCaptcha
- * @copyright   Copyright (c) 2012 Oleg Koval
+ * @copyright   Copyright (c) 2012 - 2016 Oleg Koval
  * @author      Oleg Koval <oleh.koval@gmail.com>
  */
 //include controller to override it
@@ -15,8 +15,7 @@ class OlegKoval_ProductReviewCaptcha_ProductController extends Mage_Review_Produ
     const XML_PATH_PRC_PRIVATE_KEY = 'catalog/review/prc_private_key';
 
     /**
-     * Call parent preDispatch() method
-     * 
+     * @see parent::preDispatch
      */
     public function preDispatch() {
         parent::preDispatch();
@@ -26,23 +25,14 @@ class OlegKoval_ProductReviewCaptcha_ProductController extends Mage_Review_Produ
 
     /**
      * Submit new review action
-     *
      */
     public function postAction() {
         if (Mage::getStoreConfigFlag(self::XML_PATH_PRC_ENABLED)) {
             try {
                 $post = $this->getRequest()->getPost();
                 if ($post) {
-                    //include reCaptcha library
-                    require_once(Mage::getModuleDir('', 'OlegKoval_ProductReviewCaptcha') . DS .'Helper'. DS .'recaptchalib.php');
-                    
                     //validate captcha
-                    $privatekey = Mage::getStoreConfig(self::XML_PATH_PRC_PRIVATE_KEY);
-                    $remote_addr = $this->getRequest()->getServer('REMOTE_ADDR');
-                    $captcha = recaptcha_check_answer($privatekey, $remote_addr, $post["recaptcha_challenge_field"], $post["recaptcha_response_field"]);
-
-
-                    if (!$captcha->is_valid) {
+                    if (!isset($post['g-recaptcha-response']) || !$this->isCaptchaValid($post['g-recaptcha-response'])) {
                         throw new Exception($this->__("The reCAPTCHA wasn't entered correctly."), 1);
                     }
                 }
@@ -68,4 +58,39 @@ class OlegKoval_ProductReviewCaptcha_ProductController extends Mage_Review_Produ
         parent::postAction();
     }
 
+    /**
+     * Check if captcha is valid
+     * @param  string $captchaResponse
+     * @return boolean
+     */
+    private function isCaptchaValid($captchaResponse) {
+        $result = false;
+
+        $params = array(
+            'secret' => Mage::getStoreConfig(self::XML_PATH_PRC_PRIVATE_KEY),
+            'response' => $captchaResponse
+        );
+
+        $ch = curl_init('https://www.google.com/recaptcha/api/siteverify');
+        curl_setopt($ch, CURLOPT_RETURNTRANSFER, 1) ;
+        curl_setopt($ch, CURLOPT_HEADER, 0);
+        curl_setopt($ch, CURLOPT_POST, 1);
+        curl_setopt($ch, CURLOPT_POSTFIELDS, http_build_query($params));
+        curl_setopt($ch, CURLOPT_VERBOSE, 1);
+        curl_setopt($ch, CURLOPT_SSL_VERIFYPEER, false);
+        curl_setopt($ch, CURLOPT_SSL_VERIFYHOST, false);
+        curl_setopt($ch, CURLOPT_TIMEOUT, 30);
+        $requestResult = trim(curl_exec($ch));
+        curl_close($ch);
+
+        if (is_array(json_decode($requestResult, true))) {
+            $response = json_decode($requestResult, true);
+
+            if (isset($response['success']) && $response['success'] === true) {
+                $result = true;
+            }
+        }
+
+        return $result;
+    }
 }

@@ -4,7 +4,7 @@
  *
  * @category    OlegKoval
  * @package     OlegKoval_ProductReviewCaptcha
- * @copyright   Copyright (c) 2012 Oleg Koval
+ * @copyright   Copyright (c) 2012 - 2016 Oleg Koval
  * @author      Oleg Koval <oleh.koval@gmail.com>
  */
 class OlegKoval_ProductReviewCaptcha_Model_System_Config_Source_Dropdown_Lang {
